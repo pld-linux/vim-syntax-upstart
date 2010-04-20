@@ -7,7 +7,7 @@ License:	GPL v2
 Group:		Applications/Editors/Vim
 Source0:	http://upstart.ubuntu.com/download/0.6/upstart-0.6.5.tar.gz
 # Source0-md5:	f9466bba72b655c2408353b64105853f
-Requires:	vim-rt >= 4:7.2.170
+Requires:	vim-rt >= 4:7.2.411
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
