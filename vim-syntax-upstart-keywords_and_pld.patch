@@ -1,0 +1,45 @@
+--- upstart-0.6.5/contrib/vim/syntax/upstart.vim.orig	2009-10-23 22:47:27.000000000 +0200
++++ upstart-0.6.5/contrib/vim/syntax/upstart.vim	2010-05-11 12:30:54.000000000 +0200
+@@ -14,6 +14,8 @@
+ elseif exists("b:current_syntax")
+ 	finish
+ endif
++  
++setlocal iskeyword=@,48-57,-,.
+ 
+ let is_bash = 1
+ "unlet! b:current_syntax
+@@ -33,6 +35,7 @@
+ " one argument
+ syn keyword upstartStatement description author version
+ syn keyword upstartStatement pid kill normal console env umask nice limit chroot chdir exec
++syn keyword upstartStatement expect export
+ 
+ " one or more arguments (events)
+ syn keyword upstartStatement emits
+@@ -40,7 +43,7 @@
+ syn keyword upstartStatement on start stop
+ 
+ " flag, no parameter
+-syn keyword upstartStatement daemon respawn service instance
++syn keyword upstartStatement daemon respawn service instance task
+ 
+ " prefix for exec or script 
+ syn keyword upstartOption pre-start post-start pre-stop post-stop
+@@ -53,8 +56,15 @@
+ syn keyword upstartOption limit
+ " options for console
+ syn keyword upstartOption logged output owner none
++" options for expect
++syn keyword upstartOption daemon fork stop
+ 
+-syn keyword upstartEvent startup stalled control-alt-delete kbdrequest starting started stopping stopped runlevel
++syn keyword upstartEvent startup stalled control-alt-delete kbdrequest starting started stopping stopped runlevel 
++
++" PLD events
++syn keyword upstartEvent pld.sysinit-done pld.shutdown-started 
++syn keyword upstartEvent root-filesystem virtual-filesystems local-filesystems filesystem all-swaps
++syn keyword upstartEvent pld.network-started pld.network-starting pld.network-stopped pld.network-stopping
+ 
+ hi def link upstartComment Comment
+ hi def link upstartTodo	Todo
