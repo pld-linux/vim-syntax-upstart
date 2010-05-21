@@ -2,7 +2,7 @@
 Summary:	Vim syntax: Varnish configuation Language
 Name:		vim-syntax-%{syntax}
 Version:	0.1
-Release:	2
+Release:	3
 License:	GPL v2
 Group:		Applications/Editors/Vim
 Source0:	http://upstart.ubuntu.com/download/0.6/upstart-0.6.5.tar.gz
