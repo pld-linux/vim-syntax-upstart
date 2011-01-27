@@ -2,7 +2,7 @@
 Summary:	Vim syntax: Varnish configuation Language
 Name:		vim-syntax-%{syntax}
 Version:	0.1
-Release:	3
+Release:	4
 License:	GPL v2
 Group:		Applications/Editors/Vim
 Source0:	http://upstart.ubuntu.com/download/0.6/upstart-0.6.5.tar.gz
@@ -18,13 +18,14 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Vim syntax for Upstart job files.
 
 %prep
-%setup -q -n %(echo $(basename %{S:0} .tar.gz))
-%patch0 -p1
+%setup -qc
+mv upstart-*/contrib/vim/* .
+%patch0 -p3
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_vimdatadir}/{syntax,ftdetect}
-cp -a contrib/vim/* $RPM_BUILD_ROOT%{_vimdatadir}
+cp -a syntax ftdetect $RPM_BUILD_ROOT%{_vimdatadir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
