@@ -1,11 +1,12 @@
---- upstart-0.6.5.orig/contrib/vim/ftdetect/upstart.vim	2009-10-23 22:47:27.000000000 +0200
-+++ upstart-0.6.5/contrib/vim/ftdetect/upstart.vim	2010-05-21 08:32:57.000000000 +0200
-@@ -1,2 +1,3 @@
- " Treat all /etc/init/*.conf files as upstart job files
- au BufNewFile,BufRead /etc/init/*.conf	set filetype=upstart
+--- vim-syntax-upstart-1.3/ftdetect/upstart.vim	2011-08-14 12:52:38.311513858 +0300
++++ vim-syntax-upstart-1.3/ftdetect/upstart.vim	2011-08-14 12:52:38.311513858 +0300
+@@ -2,0 +3,4 @@
++" *.upstart files in PLD Linux package repo
 +au BufNewFile,BufRead *.upstart	set filetype=upstart
---- vim-syntax-upstart-1.3/contrib/vim/syntax/upstart.vim	2011-06-14 16:54:03.000000000 +0300
-+++ vim-syntax-upstart-1.3/contrib/vim/syntax/upstart.vim	2011-08-14 12:47:44.534013176 +0300
++" rc-scripts SVN checkout
++au BufNewFile,BufRead */rc-scripts/init/*.conf set filetype=upstart
+--- vim-syntax-upstart-1.3/syntax/upstart.vim	2011-06-14 16:54:03.000000000 +0300
++++ vim-syntax-upstart-1.3/syntax/upstart.vim	2011-08-14 12:47:44.534013176 +0300
 @@ -15,6 +15,8 @@
  elseif exists("b:current_syntax")
  	finish

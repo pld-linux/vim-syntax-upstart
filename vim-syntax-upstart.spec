@@ -20,7 +20,7 @@ Vim syntax for Upstart job files.
 %prep
 %setup -qc
 mv upstart-*/contrib/vim/* .
-%patch0 -p3
+%patch0 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
