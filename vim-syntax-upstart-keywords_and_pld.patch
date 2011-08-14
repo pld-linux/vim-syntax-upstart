@@ -1,14 +1,12 @@
-diff -dur -x '*.orig' upstart-0.6.5.orig/contrib/vim/ftdetect/upstart.vim upstart-0.6.5/contrib/vim/ftdetect/upstart.vim
 --- upstart-0.6.5.orig/contrib/vim/ftdetect/upstart.vim	2009-10-23 22:47:27.000000000 +0200
 +++ upstart-0.6.5/contrib/vim/ftdetect/upstart.vim	2010-05-21 08:32:57.000000000 +0200
 @@ -1,2 +1,3 @@
  " Treat all /etc/init/*.conf files as upstart job files
  au BufNewFile,BufRead /etc/init/*.conf	set filetype=upstart
 +au BufNewFile,BufRead *.upstart	set filetype=upstart
-diff -dur -x '*.orig' upstart-0.6.5.orig/contrib/vim/syntax/upstart.vim upstart-0.6.5/contrib/vim/syntax/upstart.vim
---- upstart-0.6.5.orig/contrib/vim/syntax/upstart.vim	2009-10-23 22:47:27.000000000 +0200
-+++ upstart-0.6.5/contrib/vim/syntax/upstart.vim	2010-05-21 08:32:39.000000000 +0200
-@@ -14,6 +14,8 @@
+--- vim-syntax-upstart-1.3/contrib/vim/syntax/upstart.vim	2011-06-14 16:54:03.000000000 +0300
++++ vim-syntax-upstart-1.3/contrib/vim/syntax/upstart.vim	2011-08-14 12:47:44.534013176 +0300
+@@ -15,6 +15,8 @@
  elseif exists("b:current_syntax")
  	finish
  endif
@@ -16,38 +14,16 @@ diff -dur -x '*.orig' upstart-0.6.5.orig/contrib/vim/syntax/upstart.vim upstart-
 +setlocal iskeyword=@,48-57,-,.
  
  let is_bash = 1
- "unlet! b:current_syntax
-@@ -33,6 +35,7 @@
- " one argument
- syn keyword upstartStatement description author version
- syn keyword upstartStatement pid kill normal console env umask nice limit chroot chdir exec
-+syn keyword upstartStatement expect export
+ syn include @Shell syntax/sh.vim
+@@ -95,6 +97,11 @@
+ " upstart-socket-bridge
+ syn keyword upstartEvent socket
  
- " one or more arguments (events)
- syn keyword upstartStatement emits
-@@ -40,7 +43,7 @@
- syn keyword upstartStatement on start stop
- 
- " flag, no parameter
--syn keyword upstartStatement daemon respawn service instance
-+syn keyword upstartStatement daemon respawn service instance task
- 
- " prefix for exec or script 
- syn keyword upstartOption pre-start post-start pre-stop post-stop
-@@ -53,8 +56,15 @@
- syn keyword upstartOption limit
- " options for console
- syn keyword upstartOption logged output owner none
-+" options for expect
-+syn keyword upstartOption daemon fork stop
- 
--syn keyword upstartEvent startup stalled control-alt-delete kbdrequest starting started stopping stopped runlevel
-+syn keyword upstartEvent startup stalled control-alt-delete kbdrequest starting started stopping stopped runlevel 
-+
 +" PLD events
-+syn keyword upstartEvent pld.sysinit-done pld.shutdown-started 
-+syn keyword upstartEvent root-filesystem virtual-filesystems local-filesystems filesystem all-swaps
++syn keyword upstartEvent root-filesystem
++syn keyword upstartEvent pld.sysinit-done pld.shutdown-started
 +syn keyword upstartEvent pld.network-started pld.network-starting pld.network-stopped pld.network-stopping
- 
- hi def link upstartComment Comment
- hi def link upstartTodo	Todo
++
+ hi def link upstartComment   Comment
+ hi def link upstartTodo	     Todo
+ hi def link upstartString    String

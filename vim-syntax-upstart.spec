@@ -1,12 +1,12 @@
 %define		syntax upstart
 Summary:	Vim syntax: Varnish configuation Language
 Name:		vim-syntax-%{syntax}
-Version:	0.1
-Release:	4
+Version:	1.3
+Release:	1
 License:	GPL v2
 Group:		Applications/Editors/Vim
-Source0:	http://upstart.ubuntu.com/download/0.6/upstart-0.6.5.tar.gz
-# Source0-md5:	f9466bba72b655c2408353b64105853f
+Source0:	http://launchpad.net/upstart/1.x/1.3/+download/upstart-%{version}.tar.gz
+# Source0-md5:	7820797b64878c27115fff6a7398a6a9
 Patch0:		%{name}-keywords_and_pld.patch
 Requires:	vim-rt >= 4:7.2.411
 BuildArch:	noarch
